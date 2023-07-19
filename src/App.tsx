@@ -1,10 +1,14 @@
 import "./global.css"
 
+import styles from "./App.module.css"
+
+import rocketSvg from "./assets/rocket.svg"
+
 function App() {
   return (
     <>
-      <header>
-        <img />
+      <header className={styles.header}>
+        <img src={rocketSvg} />
         <h1><span>to</span><span>do</span></h1>
       </header>
 
