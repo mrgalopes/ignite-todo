@@ -4,6 +4,9 @@ import styles from "./App.module.css"
 
 import rocketSvg from "./assets/rocket.svg"
 import plusSvg from "./assets/plus.svg"
+import trashSvg from "./assets/trash.svg"
+import uncheckedSvg from "./assets/unchecked.svg"
+import checkedSvg from "./assets/checked.svg"
 
 function App() {
   return (
@@ -30,15 +33,30 @@ function App() {
         </section>
 
         <main>
-          <div>
-            <input type="checkbox" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
-            <button />
+          <div className={styles.todo}>
+            <button><img src={uncheckedSvg} /></button>
+            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <button><img src={trashSvg} /></button>
           </div>
-          <div>
-            <input type="checkbox" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
-            <button />
+          <div className={styles.todo}>
+            <button><img src={uncheckedSvg} /></button>
+            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <button><img src={trashSvg} /></button>
+          </div>
+          <div className={styles.todo}>
+            <button><img src={uncheckedSvg} /></button>
+            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <button><img src={trashSvg} /></button>
+          </div>
+          <div className={styles.doneTodo}>
+            <button><img src={checkedSvg} /></button>
+            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <button><img src={trashSvg} /></button>
+          </div>
+          <div className={styles.doneTodo}>
+            <button><img src={checkedSvg} /></button>
+            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+            <button><img src={trashSvg} /></button>
           </div>
         </main>
       </div>
