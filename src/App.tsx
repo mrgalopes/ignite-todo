@@ -3,6 +3,7 @@ import "./global.css"
 import styles from "./App.module.css"
 
 import rocketSvg from "./assets/rocket.svg"
+import plusSvg from "./assets/plus.svg"
 
 function App() {
   return (
@@ -12,32 +13,35 @@ function App() {
         <h1><span>to</span><span>do</span></h1>
       </header>
 
-      <form>
-        <input />
-        <button type="submit" />
-      </form>
+      <div className={styles.content}>
 
-      <section>
-        <div>
-          Tarefas criadas <span>5</span>
-        </div>
-        <div>
-          Concluídas <span>2 de 5</span>
-        </div>
-      </section>
+        <form className={styles.newTodoForm}>
+          <input placeholder="Adicione uma nova tarefa" />
+          <button type="submit"><span>Criar</span><img src={plusSvg} /></button>
+        </form>
 
-      <main>
-        <div>
-          <input type="checkbox" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
-          <button />
-        </div>
-        <div>
-          <input type="checkbox" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
-          <button />
-        </div>
-      </main>
+        <section className={styles.todosHeader}>
+          <div className={styles.numCreated}>
+            Tarefas criadas <span>5</span>
+          </div>
+          <div className={styles.numDone}>
+            Concluídas <span>2 de 5</span>
+          </div>
+        </section>
+
+        <main>
+          <div>
+            <input type="checkbox" />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
+            <button />
+          </div>
+          <div>
+            <input type="checkbox" />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, suscipit?</p>
+            <button />
+          </div>
+        </main>
+      </div>
     </>
   )
 }
