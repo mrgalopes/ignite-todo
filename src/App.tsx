@@ -5,8 +5,53 @@ import styles from "./App.module.css"
 
 import rocketSvg from "./assets/rocket.svg"
 import plusSvg from "./assets/plus.svg"
+import { ChangeEvent, FormEvent, useState } from "react"
+
+interface Todo {
+  id: number;
+  text: string;
+  done: boolean;
+}
+
+const initialTodos: Todo[] = [
+  {
+    id: 1,
+    text: 'Finish simulation',
+    done: false,
+  },
+  {
+    id: 2,
+    text: "Return book",
+    done: false,
+  },
+  {
+    id: 3,
+    text: "Clean the room",
+    done: true,
+  }
+]
 
 function App() {
+  const [todos, setTodos] = useState(initialTodos);
+  const [newTodoText, setNewTodoText] = useState("");
+
+  function handleNewTodoTextChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewTodoText(event.target.value);
+  }
+
+  function onNewTodoSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (newTodoText === "") return;
+    const newTodo: Todo = {
+      id: todos.length + 1,
+      text: newTodoText,
+      done: false,
+    };
+
+    setTodos(ts => [newTodo, ...ts])
+    setNewTodoText("")
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -16,8 +61,12 @@ function App() {
 
       <div className={styles.content}>
 
-        <form className={styles.newTodoForm}>
-          <input placeholder="Adicione uma nova tarefa" />
+        <form className={styles.newTodoForm} onSubmit={onNewTodoSubmit}>
+          <input
+            placeholder="Adicione uma nova tarefa"
+            value={newTodoText}
+            onChange={handleNewTodoTextChange}
+          />
           <button type="submit"><span>Criar</span><img src={plusSvg} /></button>
         </form>
 
@@ -31,11 +80,9 @@ function App() {
         </section>
 
         <main>
-          <Todo text="Bla 1. Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
-          <Todo text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
-          <Todo text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
-          <Todo done text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
-          <Todo done text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
+          {todos.map(todo => (
+            <Todo key={todo.id} text={todo.text} done={todo.done} />
+          ))}
         </main>
       </div>
     </>
