@@ -27,6 +27,7 @@ body {
 }
 
 body,
-button {
+button,
+input {
     font-family: 'Inter', sans-serif;
 }
