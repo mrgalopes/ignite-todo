@@ -1,12 +1,10 @@
-import "./global.css"
+import { Todo } from "./components/Todo"
 
+import "./global.css"
 import styles from "./App.module.css"
 
 import rocketSvg from "./assets/rocket.svg"
 import plusSvg from "./assets/plus.svg"
-import trashSvg from "./assets/trash.svg"
-import uncheckedSvg from "./assets/unchecked.svg"
-import checkedSvg from "./assets/checked.svg"
 
 function App() {
   return (
@@ -33,31 +31,11 @@ function App() {
         </section>
 
         <main>
-          <div className={styles.todo}>
-            <button><img src={uncheckedSvg} /></button>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <button><img src={trashSvg} /></button>
-          </div>
-          <div className={styles.todo}>
-            <button><img src={uncheckedSvg} /></button>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <button><img src={trashSvg} /></button>
-          </div>
-          <div className={styles.todo}>
-            <button><img src={uncheckedSvg} /></button>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <button><img src={trashSvg} /></button>
-          </div>
-          <div className={styles.doneTodo}>
-            <button><img src={checkedSvg} /></button>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <button><img src={trashSvg} /></button>
-          </div>
-          <div className={styles.doneTodo}>
-            <button><img src={checkedSvg} /></button>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <button><img src={trashSvg} /></button>
-          </div>
+          <Todo text="Bla 1. Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
+          <Todo text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
+          <Todo text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
+          <Todo done text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
+          <Todo done text="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer." />
         </main>
       </div>
     </>
