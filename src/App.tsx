@@ -37,6 +37,8 @@ function App() {
   const [todos, setTodos] = useState(initialTodos);
   const [newTodoText, setNewTodoText] = useState("");
 
+  const numDoneTodos = todos.filter(todo => todo.done).length;
+
   function handleNewTodoTextChange(event: ChangeEvent<HTMLInputElement>) {
     setNewTodoText(event.target.value);
   }
@@ -90,10 +92,10 @@ function App() {
 
         <section className={styles.todosHeader}>
           <div className={styles.numCreated}>
-            Tarefas criadas <span>5</span>
+            Tarefas criadas <span>{todos.length}</span>
           </div>
           <div className={styles.numDone}>
-            Concluídas <span>2 de 5</span>
+            Concluídas <span>{numDoneTodos} de {todos.length}</span>
           </div>
         </section>
 
