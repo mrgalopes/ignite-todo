@@ -1,3 +1,4 @@
+import { ChangeEvent, FormEvent, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 
 import { Todo } from "./components/Todo"
@@ -7,7 +8,7 @@ import styles from "./App.module.css"
 
 import rocketSvg from "./assets/rocket.svg"
 import plusSvg from "./assets/plus.svg"
-import { ChangeEvent, FormEvent, useState } from "react"
+import clipboardPng from "./assets/clipboard.png"
 
 export interface TodoItem {
   id: string;
@@ -100,9 +101,19 @@ function App() {
         </section>
 
         <main>
-          {todos.map(todo => (
-            <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-          ))}
+          {
+            todos.length === 0 ? (
+              <div className={styles.noTodosContainer}>
+                <img src={clipboardPng} />
+                <div>
+                  <p className={styles.noTodosTitle}>Você ainda não tem tarefas cadastradas</p>
+                  <p className={styles.noTodosSubheading}>Crie tarefas e organize seus itens a fazer</p>
+                </div>
+              </div>
+            ) : todos.map(todo => (
+              <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+            ))
+          }
         </main>
       </div>
     </>
