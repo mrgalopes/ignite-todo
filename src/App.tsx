@@ -9,13 +9,13 @@ import rocketSvg from "./assets/rocket.svg"
 import plusSvg from "./assets/plus.svg"
 import { ChangeEvent, FormEvent, useState } from "react"
 
-interface Todo {
+export interface TodoItem {
   id: string;
   text: string;
   done: boolean;
 }
 
-const initialTodos: Todo[] = [
+const initialTodos: TodoItem[] = [
   {
     id: uuidv4(),
     text: 'Finish simulation',
@@ -44,7 +44,7 @@ function App() {
   function onNewTodoSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (newTodoText === "") return;
-    const newTodo: Todo = {
+    const newTodo: TodoItem = {
       id: uuidv4(),
       text: newTodoText,
       done: false,
@@ -52,6 +52,22 @@ function App() {
 
     setTodos(ts => [newTodo, ...ts])
     setNewTodoText("")
+  }
+
+  function toggleTodo(id: string) {
+    setTodos(ts => ts.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          done: !todo.done,
+        }
+      }
+      return todo;
+    }))
+  }
+
+  function deleteTodo(id: string) {
+    setTodos(ts => ts.filter(todo => todo.id !== id));
   }
 
   return (
@@ -83,7 +99,7 @@ function App() {
 
         <main>
           {todos.map(todo => (
-            <Todo key={todo.id} text={todo.text} done={todo.done} />
+            <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
           ))}
         </main>
       </div>
