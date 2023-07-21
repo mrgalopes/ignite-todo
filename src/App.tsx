@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid"
+
 import { Todo } from "./components/Todo"
 
 import "./global.css"
@@ -8,24 +10,24 @@ import plusSvg from "./assets/plus.svg"
 import { ChangeEvent, FormEvent, useState } from "react"
 
 interface Todo {
-  id: number;
+  id: string;
   text: string;
   done: boolean;
 }
 
 const initialTodos: Todo[] = [
   {
-    id: 1,
+    id: uuidv4(),
     text: 'Finish simulation',
     done: false,
   },
   {
-    id: 2,
+    id: uuidv4(),
     text: "Return book",
     done: false,
   },
   {
-    id: 3,
+    id: uuidv4(),
     text: "Clean the room",
     done: true,
   }
@@ -43,7 +45,7 @@ function App() {
     event.preventDefault();
     if (newTodoText === "") return;
     const newTodo: Todo = {
-      id: todos.length + 1,
+      id: uuidv4(),
       text: newTodoText,
       done: false,
     };
