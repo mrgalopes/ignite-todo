@@ -1,5 +1,3 @@
-import { MouseEvent } from "react"
-
 import { TodoItem } from "../App"
 
 import styles from "./Todo.module.css"
@@ -17,11 +15,11 @@ interface TodoProps {
 export function Todo({ todo, toggleTodo, deleteTodo }: TodoProps) {
     const { text, done } = todo;
 
-    function handleToggle(_event: MouseEvent<HTMLButtonElement>) {
+    function handleToggle() {
         toggleTodo(todo.id);
     }
 
-    function handleDelete(_event: MouseEvent<HTMLButtonElement>) {
+    function handleDelete() {
         deleteTodo(todo.id);
     }
 
